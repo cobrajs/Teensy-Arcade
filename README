@@ -1,0 +1,9 @@
+This project was inspired by ladyada's USB gamepad project. I used a Teensy in Arduino mode to write the code, and I used arcade parts from SparkFun. This was really just a test to make sure this was doable before I build a bigger one.
+
+The code assigns different key slots to different keys based on how many keys can get clicked at a time. Since I'm limited to six "channels" (I guess that makes sense), I had to assign keys in ways it wouldn't be noticeable. This has an advantage, I think, over regular arcade panels, because if I had two players, I could give each player a certain number of key channels so that they wouldn't overwrite each others commands, like what happens when I used to have a lot of people playing hotseat games on my old laptop.
+
+I had some trouble getting the keys to act enough like a real keyboard when basing my code of ladyada's code from her gamepad project. This is due to the way games watch keys. Ladyada's code generated a keystroke and ended the stroke, then implemented a key delay system, which worked fine in testing moving the cursor around and such, but this does not work in games (ones I tried anyway). The better implementation (I think so anyway) is to have each key channel be watched, and leave keys turned on in the channel if they are held down. This lets the computer use its own key repeat system.
+
+It sounds intuitive, but it took me a couple hours to end up at the right combination :P
+
+The code is also set up to watch a toggle switch, so that I can have the panel either for playing games or for sending codes to control my music player of choice, CMUS.
